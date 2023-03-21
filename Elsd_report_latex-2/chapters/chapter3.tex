@@ -1,0 +1,56 @@
+\chapter{Grammar Presentation}
+
+\begin{verbatim}
+S  = {<program>}
+VT = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, …, x, y, z, A, B, C, 
+    …, X, Y, Z, true, false, +, -, /, *, Sine, Sawtooth, Triangle, 
+    Square, lowpass, highpass, distortion, phase, time, envelope, play, 
+    record, volume, pan, reverb, gain, freq, :, ;, (, ), >, <, }, {, “, 
+    func process(), func compose(), if, else, for, return, break, 
+    continue, >, >=, ==, !=, <, <=, //}
+Vn = {<program>, <statement>, <query_invocation>, <comments>, 
+    <variable_declaration>, <method_invocation>, <assignment_statement>, 
+    <identifier>, <value>, <values> <characters>, <character>, 
+    <string>, <digits>, <digit>, <non_zero_digit>, <method_name>, 
+    <comment>, <method_declaration>, <expression>, <term>, <operation>, 
+    <arithmetic_operation>, <comparative_operation>, <variable>, 
+    <constant>, }
+P = {
+    <program> -> func process() {<statement>+}* func compose() {<statement>+}
+    <statement> -> <query_invocation>
+              | <comments>
+              | if ( <expression> ) <statement>else <statement>
+              | for <id> = <expression> , <expression> <statement>
+              | return <expression> 
+              | break  
+              | continue 
+              | <statement>
+    <query_ivocation> -> <variable_declaration> 
+              | <method_invocation> 
+              | <method_declaration>
+              | <assignment_statement>
+    <expression> -> <term>| <expression> <operation> <expression> | (<expression>)
+    <term> -> <variable> | <constant>
+    <variable> -> <identifier>
+    <constant> -> <digits>
+    <operation> -> <arithmetic_operation>| <comparative_operation>
+    <arithmetic_operation> -> +| -| *| /
+    <comparative_operation> -> >| >=| ==| <| <=| !=
+    <variable_declaration> -> <identifier>=<value> | <identifier> = <method_invocation>
+    <identifier> -> <characters>| <characters><string>
+    <values> -> <value> | <value>,<values>
+    <value> -> <digits> | <characters>
+    <digits> → <digit> |<digit><digits>
+    <digit> → 0| <non_zero_digit>
+    <non_zero_digit> → 1| 2| 3| 4| 5| 6| 7| 8| 9
+    <characters> -> <character> |<character><characters>
+    <string> -> ‘<characters>’ | ‘<digits>’
+    <character> → a| b| c … x| y| z … A| B| C| … X| Y| Z
+    <method_invocation> -> <method_name>([<values>+])
+    <method_name> -> load| delay| set_gain| set_reverb|...
+    <assigment_statement> -> 	<identifier> = <value> 
+    | <identifier> = <identifier> 
+    | <identifier> = <string>
+    <comments> → <comment>| <comments><comment>
+    <comment> → // <string> }
+\end{verbatim}
