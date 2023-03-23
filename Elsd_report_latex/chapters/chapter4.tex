@@ -1,0 +1,28 @@
+\chapter{Implementation}
+ Implementation is the transition from planning the project to executing it. This is the phase where everything we have planned is realized, and as a team, we work diligently to accomplish the project's objectives. In this chapter, we will analyze the process of the implementation of our DSL. We will outline the steps we took and the tools we used, the challenges we faced, and the strategies we employed to overcome them.
+\section{Implementation process} 
+In order to implement a formal language we first needed to come up with grammar that corresponded to the goals we set for the project. We have laid out the grammar in the previous section. 
+
+\subsection{Working in ANTLR}
+ANTLR (Another Tool for Language Recognition) is a powerful parser generator commonly used to build compilers, interpreters, and other language-based tools. An open source software tool that can generate parsers for various programming languages ​​and data formats. ANTLR was first published in 1989 by Terence Parr, Professor of Computer Science at the University of San Francisco, and has since become one of his generators of the most popular parsers available.
+
+ANTLR uses a context-free grammar (CFG) to generate a parser that can recognize and parse input text based on the rules defined in the grammar. Grammar can be written in a simple, intuitive syntax that is easy to understand and modify. ANTLR also supports the use of semantic actions, allowing developers to add custom code to the parser to perform specific actions based on the input text.
+
+One of the main advantages of ANTLR is the ability to generate parsers in multiple programming languages such as Java, Python, C# and JavaScript. This makes it an ideal tool for building cross-platform language-based tools. ANTLR also provides many tools and utilities to help developers debug and test parsers, such as a graphical user interface for visualizing the parse tree and a debugger for stepping through the parsing process.
+
+Overall, ANTLR is a powerful and versatile parser generator, making it a popular choice for building compilers, interpreters, and other language-based tools. Its ease of use, flexibility, and cross-platform support make it an ideal tool for developers working on a variety of projects. 
+
+We used the documentation provided on the ANTLR GitHub to get accustomed to using the tool. Then, we defined our grammar in the ANTLR software and utilized the parser capabilities to generate a parse tree on sample code.
+\showfigure{0.3}{./images/Parse_Tree.png}{The Parse Tree}
+{parse_tree}
+
+
+\subsection{The team working process}
+The success of any project largely depends on effective teamwork, and our team was no exception. Our ability to communicate and collaborate effectively was a key factor in our success. We chose Discord as our primary communication platform due to its ease of use, reliability, and availability across multiple devices. It allowed us to share ideas, discuss progress, and troubleshoot any issues that arose in real-time.
+
+While Discord was a great tool for most of our communication needs, there were occasions when we needed to have face-to-face conversations for more important matters. We made sure to schedule these meetings well in advance and held them in a conducive environment, such as a quiet meeting room. This allowed us to have a more focused and productive conversation and ensured that everyone was on the same page.
+
+To ensure that tasks were completed efficiently, we divided them evenly among team members based on their strengths and preferences. This approach helped to maximize individual contributions and allowed everyone to work on tasks they were most comfortable with. It also helped to prevent burnout and ensured that all members of the team were equally invested in the project.
+
+Throughout the project, we maintained a positive and dedicated attitude, and this helped us to overcome any challenges that we encountered. We recognized each other's strengths and weaknesses, and we were always willing to offer help or support whenever needed. Our teamwork was a key factor in our success, and it allowed us to achieve our goals and deliver a high-quality project.
+
