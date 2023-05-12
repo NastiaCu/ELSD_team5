@@ -1,39 +1,51 @@
-from lexer import Lexer
-from parser import Parser
-
-def main():
-    # example code to parse
-    code = '''
-func process() {
-    var x = 123;
-    var y = "hello, world!";
-    set_gain(x + 456);
-    if (x > 100) {
-        return y;
-    } else {
-        for i = 0, 10 {
-            delay(i);
-        }
-        break;
-    }
-}
-'''
+from antlr4 import *
+from resources.ExprLexer import ExprLexer
+from resources.ExprParser import ExprParser
+from resources.ExprListener import ExprListener
+from playsound import playsound
 
 
-    tokens = list(Lexer(code))
+# Create a stream of characters from the input string
+input_stream = FileStream('input.txt')
+
+# Create a lexer that will identify tokens in the input stream
+lexer = ExprLexer(input_stream)
+
+# Create a stream of tokens from the lexer
+token_stream = CommonTokenStream(lexer)
+
+# Create a parser that will generate a parse tree from the token stream
+parser = ExprParser(token_stream)
+
+# Parse the input string and generate a parse tree
+tree = parser.prog()
 
 
-    print("Tokens:")
-    print(tokens[:60])
 
-
-    ast = Parser(code)
-
+loaded_sound = ""
+current_sound = ""
+fx = ()
+# Create a listener to traverse the parse tree
+class MyListener(ExprListener):
     
 
-    print("\nGenerated AST:")
-    print(ast)
+    def enterMethod_invocation(self, ctx:ExprParser.Method_invocationContext):
+        method_name = ctx.method_name().getText()
+        rhs = ctx.getText().split("(")
+        lhs = rhs[1].split(")")
+        method_atributes = lhs[0]
+        global loaded_sound
+        global current_sound
+        if method_name == "load":
+            loaded_sound = method_atributes
+            current_sound = loaded_sound
+        if method_name == "play":
+            playsound(current_sound)
+        pass
 
-if __name__ == "__main__":
-    main()
 
+
+listener = MyListener()
+
+walker = ParseTreeWalker()
+walker.walk(listener, tree)

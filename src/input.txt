@@ -1,0 +1,6 @@
+func process(){
+    load(sound.mp3)
+}
+func compose(){
+    play()
+}
