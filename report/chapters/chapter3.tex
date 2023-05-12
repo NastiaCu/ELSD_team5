@@ -1,4 +1,7 @@
 \chapter{Grammar Presentation}
+For a better understanding, further is represented the grammar for sound processing language according to a very simple and textual program. This program will illustrate each aspect of the grammar in a comprehensive manner. 
+
+\section{Grammar}
 To design a grammar, there are several tuples that need to be implemented. Every Grammar consists of 4 tuples as follows:
 
 $G$ = ($V_T$, $V_N$, $P$, $S$), where:
@@ -65,3 +68,86 @@ P = {
     <comments> → <comment>| <comments><comment>
     <comment> → // <string> }
 \end{verbatim}
+
+\section{Semantic and Lexicon}
+
+Semantic: 
+\begin{enumerate}
+\item 
+\begin{verbatim}
+<program> -> func process() {<statement>+}* func compose() {<statement>+}
+\end{verbatim}
+This is a staring point of the program, which defines its structure. It consists of two function definitions: "process" and "compose". Each function definition contains one or more statements.
+\item 
+\begin{verbatim}
+<statement> -> <query_invocation> | <comments> 
+            | if ( <expression> ) <statement>else <statement> 
+            | for <id> = <expression> , <expression> <statement> 
+            | return <expression> | break | continue | <statement>
+\end{verbatim}
+This rule defines different types of statements that can be included in a program. A statement can be a query invocation, a comment, an if-else statement, a for loop, a return statement, or a break/continue statement. A statement can also be another statement.
+\item 
+\begin{verbatim}
+<query_ivocation> -> <variable_declaration> | <method_invocation> 
+                    | <method_declaration> | <assignment_statement>
+\end{verbatim}
+This rule defines the different types of query invocations that can be included in a statement. A query invocation can be a variable declaration, a method invocation, a method declaration, or an assignment statement.
+\item 
+\begin{verbatim}
+<expression> -> <term>| <expression> <operation> <expression> | (<expression>)
+\end{verbatim}
+This rule defines the structure of an expression. An expression can be a term, an operation between two expressions, or a subexpression enclosed in parentheses.
+\item 
+\begin{verbatim}
+<term> -> <variable> | <constant>
+\end{verbatim}
+This rule defines the different types of terms that can be included in an expression. A term can be a variable or a constant.
+\item 
+\begin{verbatim}
+<variable> -> <identifier>
+\end{verbatim}
+
+This rule defines a variable as an identifier.
+\end{enumerate}
+
+Lexicon: 
+
+\begin{enumerate}
+\item \begin{verbatim}<non_zero_digit>\end{verbatim} is a regular expression that represents non-zero digits.
+\item \begin{verbatim}<arithmetic_operation>\end{verbatim} is a regular expression that represents the operations such as addition, subtraction, multiplication and division.
+\item \begin{verbatim}<comparative_operation> \end{verbatim}is a regular expression that represents the comparison operations such as greater than, greater than or equal to, equal to, less than, less than or equal to, and not equal to.
+\item \begin{verbatim}<character> \end{verbatim}is a regular expression that represents the uppercase and lowercase characters of the alphabet.
+\end{enumerate}
+
+\section{Syntax analysis}
+
+The sound processing language was designed to provide users with the ability to manipulate audio in a variety of ways. This includes adjusting volume levels, adding effects, and even generating new sounds. To achieve this, we needed to create a robust syntax that could handle a wide range of user input and provide meaningful feedback to the user.
+
+The first step in developing the sound processing language was to define its grammar. This involved specifying the various parts of speech that could be used, as well as the syntax rules that governed how those parts of speech could be combined to create valid statements.  Then this grammar was used to generate a parser, which could read and interpret user input according to our rules.
+
+Once we had our parser in place, we needed to ensure that it could handle a wide range of user input. To do this, we extensively tested the parser against a variety of test cases, making sure that it was able to accurately recognize valid input and provide appropriate error messages for invalid input.
+
+In addition to recognizing valid input, the parser needed to be able to perform semantic actions based on the user's input. This involved interpreting the input and manipulating audio data structures, such as waveforms and frequency spectra, as necessary. For example, if a user input a command to add reverb to an audio clip, the parser would need to recognize this input and apply the appropriate signal processing algorithms to modify the audio data.
+
+Throughout the development process, we continuously refined the grammar and parser to ensure that they were as accurate and efficient as possible. We also provided extensive documentation and error messages to help users understand the language's syntax and provide helpful feedback when errors occurred.
+
+Overall, developing the sound processing language was a challenging but rewarding experience. By creating a powerful and flexible language for manipulating audio data, we hope to empower users to explore new creative possibilities and push the boundaries of what's possible with sound.
+
+\section{Parse Tree}
+A parsing tree is a tree-like structure that represents the grammatical structure of a sentence or phrase based on a context-free grammar. 
+The grammar above was defined in the ANTLR software and the parser capabilities were utilized to generate a parse tree for the following sample code:
+\begin{verbatim} 
+    func process(){
+    mysound = load(sound.mp3)
+    setreverb(15 mysound)
+    delay(mysound)
+    }
+    func compose(){
+    	play(mysound)
+    }
+\end{verbatim}
+
+This parse tree allowes us to visualize the structure of the code and how it conforms to the defined grammar rules. Each node in the tree corresponds to a production rule in the grammar, and the tree's structure represents the hierarchical relationship between those rules. This tree also provides valuable information for detecting errors and debugging code, as it allows us to see exactly where a syntax error occurred and how the input should have been parsed. The ANTLR software provides powerful tools for generating and analyzing parsing trees, making it a valuable resource for developers working with complex languages and grammars.
+
+\showfigure{0.3}{./images/Parse_Tree.png}{The Parse Tree}
+{parse_tree}

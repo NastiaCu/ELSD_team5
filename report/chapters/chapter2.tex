@@ -20,47 +20,36 @@ and channel count, as well as the specific operations being
 performed.
 
 \section{Basic data structures}
-For creating a fully fledged DSL for sound processing we would like 
-to implement the following data structures: 
+For creating a fully fledged DSL for sound processing it would be important to implement the following data structures: 
 
-An audio buffer which is a fixed-length array of samples that 
-represents an audio signal. It is the fundamental data structure 
-used to represent audio data in a digital audio system. The audio 
-buffer can be used to store audio signals before and after 
-processing.
+\begin{itemize}
+\hitem An audio buffer which is a fixed-length array of samples that represents an audio signal. It is the fundamental data structure used to represent audio data in a digital audio system. The audio buffer can be used to store audio signals before and after processing.
 
-Filters are commonly used in audio processing to manipulate audio 
-signals. Digital filters, such as Finite Impulse Response (FIR) or 
-Infinite Impulse Response (IIR), are often represented using 
-coefficients that are stored in arrays or matrices.
+\hitem Filters are commonly used in audio processing to manipulate audio signals. Digital filters, such as Finite Impulse Response (FIR) or Infinite Impulse Response (IIR), are often represented using coefficients that are stored in arrays or matrices.
 
-A spectrogram is a visual representation of the spectrum of 
+\hitem A spectrogram is a visual representation of the spectrum of 
 frequencies of an audio signal as it changes over time. Spectrograms 
 can be represented as a matrix or a multi-dimensional array, where 
 each element represents the energy of a frequency at a specific 
 time.
 
-Musical notation can be used to represent the pitch,if the DSL 
-supports music composition, duration, and timing of notes. Musical 
-notation can be represented using data structures such as lists or 
-trees, where each element represents a note or a chord.
+\hitem Musical notation can be used to represent the pitch,if the DSL supports music composition, duration, and timing of notes. Musical notation can be represented using data structures such as lists or trees, where each element represents a note or a chord.
+\end{itemize}
 
 \section{Basic control structures}
-Our DSL will have the following control structures to provide the 
-user with a tool for sound manipulation:
+The given DSL will have the following control structures to provide the user with a tool for sound manipulation:
 
-Functions are commonly used to manipulate audio signals in a DSL 
-for sound processing. For example, you might define functions to 
-apply filters, equalization, or other transformations to an audio 
-signal.
+\begin{itemize}
+\hitem Functions are commonly used to manipulate audio signals in a DSL for sound processing. For example, one might define functions to apply filters, equalization, or other transformations to an audio signal.
 
-Loops can be used to process audio signals in real-time or to 
-iterate over a sequence of audio samples. For example, a user might 
-use a loop to apply an effect to a section of an audio signal.
-Conditionals can be used to apply different processing to an audio 
-signal depending on the values of certain parameters or 
-variables. Events can be used to trigger changes in the sound, such 
+\hitem Loops can be used to process audio signals in real-time or to iterate over a sequence of audio samples. For example, a user might use a loop to apply an effect to a section of an audio signal.
+
+\hitem Conditionals can be used to apply different processing to an audio signal depending on the values of certain parameters or 
+variables. 
+
+\hitem Events can be used to trigger changes in the sound, such 
 as starting or stopping a sound effect or changing the volume.
+\end{itemize}
 
 The user interface for the DSL can be designed to provide a 
 variety of ways for users to manipulate sound. This can include 
@@ -74,7 +63,7 @@ also adjust parameters such as volume, tempo, or filter cutoff
 frequency using the user interface.
 
 \section{Inputs and outputs of the DSL}
-\par The most common input methods would include:
+The most common input methods would include:
 \begin{itemize}
     \hitem Audio files: Audio files can be used as input to the 
     DSL, allowing users to load existing audio recordings or sound 
@@ -93,27 +82,20 @@ would obviously be modified by the script given by the user.
 \section{Error handling}
 Error handling is an important aspect of any programming language, 
 including a DSL (Domain Specific Language) for sound processing. 
-Our DSL should provide a clear and consistent mechanism for 
+The DSL should provide a clear and consistent mechanism for 
 detecting and reporting errors to users.
 
 Exceptions can be used to handle errors that occur during runtime. 
 When an exception is thrown, the DSL can display an error message 
 to the user and terminate the program or, in some cases, try to 
 recover from the error and continue execution.
-Our DSL will include validation checks to catch errors before they 
-occur during runtime. For example, the  DSL might check that a user-
-provided file exists and is in the correct format before attempting 
-to load it. Validation can help prevent errors that might otherwise 
-result in exceptions or unexpected behavior.
+The given DSL will include validation checks to catch errors before they occur during runtime. For example, the  DSL might check that a user-provided file exists and is in the correct format before attempting to load it. Validation can help prevent errors that might otherwise result in exceptions or unexpected behavior.
 
 Warnings can be used to alert users to potential issues that do not 
 necessarily prevent execution of the program. For example, the DSL 
 might display a warning when a user sets a parameter value outside 
 of a recommended range, but still allow the program to execute.
-Our DSL can provide debugging tools to help users diagnose errors 
-during runtime. For example, the DSL might provide a way for users 
-to inspect the values of variables or print debugging messages to 
-the console.
+The DSL to be implemented can provide debugging tools to help users diagnose errors during runtime. For example, the DSL might provide a way for users to inspect the values of variables or print debugging messages to the console.
 
 Clear documentation can help users understand how to use the DSL 
 and avoid errors. The DSL will provide documentation that 
